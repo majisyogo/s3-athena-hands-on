@@ -1,1 +1,4 @@
-"Sample CSV data" 
+date,product,quantity,price
+2025-11-01,Tomato,10,100
+2025-11-02,Potato,5,50
+2025-11-03,Carrot,7,70
