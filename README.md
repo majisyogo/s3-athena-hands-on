@@ -1,28 +1,14 @@
-# 【Sales Data Visualization Project】
+##【Project Overview】
+Analyze and visualize sales data using S3 → Athena → QuickSight with AWS CLI.
 
-This repository is a sample project to analyze and visualize sales data using **S3 → Athena → QuickSight** with AWS CLI.
+##【Architecture】
+CSV data is stored in data/ folder and uploaded to S3.
+Athena tables are created via SQL scripts in queries/.
+Athena queries are executed using scripts/run_athena_query.sh.
+QuickSight datasets are created via scripts/create_quicksight_dataset.sh.
+QuickSight dashboards visualize sales trends, rankings.
 
-## Folder Structure
-【Sales Data Visualization Project】
-⇒data(CSV)
-⇒query Athena(SQL)
-⇒script
-⇒README.md
-
-## Prerequisites
-- AWS account (QuickSight account already set up)
-- AWS CLI v2 installed
-- S3 bucket for Athena available
-
-## Workflow
-1. Place sample CSV files in `data/`
-2. Create Athena tables using SQL in `queries/`
-3. Execute Athena queries via `scripts/run_athena_query.sh`
-4. Create QuickSight datasets via `scripts/create_quicksight_dataset.sh`
-5. Visualize data in QuickSight dashboards
-
-## Example Analyses
-- Monthly sales trends (line chart)
-- Customer sales ranking (bar chart)
-- Sales performance by salesperson
-- Regional sales distribution
+##【What I Learned】
+Athena requires proper table definitions to query CSV data successfully.
+S3 bucket structure affects query paths, so organization is important.
+QuickSight datasets can be automated via AWS CLI, saving manual steps.
