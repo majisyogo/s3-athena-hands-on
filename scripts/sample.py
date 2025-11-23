@@ -1,23 +1,22 @@
+# Tool
 import boto3
 import time
-import json
 
-# ----------------------
-# Settings
-# ----------------------
+
+
+#1.【Setting】
 REGION = "ap-northeast-1"
-S3_OUTPUT = "s3://your-bucket-name/query-results/"
-DATABASE = "sales_db"
-ATHENA_SQL_FILE = "queries/create_sales_table.sql"
+S3_OUTPUT = "s3://bucket-name/query-results/"
+DATABASE = "project_database"
+ATHENA_SQL_FILE = "queries/create_table.sql"
 
-QUICKSIGHT_ACCOUNT_ID = "546736804874"
+QUICKSIGHT_ACCOUNT_ID = "123456789012"  # ←Use your own account number.
 QUICKSIGHT_NAMESPACE = "default"
-DATASET_NAME = "SalesDataset"
-DATA_SOURCE_NAME = "SalesAthenaDataSource"
+DATASET_NAME = "AnalyticsDataset"
+	DATA_SOURCE_NAME = "AthenaDataSource"
 
-# ----------------------
+
 # Create Athena client
-# ----------------------
 athena = boto3.client("athena", region_name=REGION)
 
 # Read SQL file
@@ -30,8 +29,9 @@ response = athena.start_query_execution(
     QueryExecutionContext={"Database": DATABASE},
     ResultConfiguration={"OutputLocation": S3_OUTPUT}
 )
-query_id = response["QueryExecutionId"]
-print(f"Athena query started: {query_id}")
+query_id = response["QueryExecutionId"] #Athena assigns query ID.
+print(f"Query ID is {query_id}")
+
 
 # Wait until the query is finished
 while True:
